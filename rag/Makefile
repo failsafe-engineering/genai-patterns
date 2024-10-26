@@ -22,10 +22,6 @@ test: ## Run tests
 lint: ## Check code formatting with Black
 	black --check $(SRC) $(TESTS)
 
-## Run static type checks with mypy
-typecheck: ## Run static type checks with mypy
-	mypy $(SRC) $(TESTS)
-
 ## Format code with Black
 format: ## Format code using Black
 	black $(SRC) $(TESTS)

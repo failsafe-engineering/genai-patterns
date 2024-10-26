@@ -3,16 +3,30 @@ In the context of large language models, "RAG" stands for Retrieval-Augmented Ge
 
 This allows the model to answer questions or generate text that is more accurate and up-to-date, even if that information wasn't part of the model's original training data. It's commonly used in scenarios where up-to-date or specific factual information is important, such as question answering, summarization, or providing contextually rich responses.
 
-This script asks an OpenAI LLM for the list of winners of the Nobel Prize in physics from 2020 to 2024. Since the LLM was trained before the announcement in 2024 it can only tell the winners from 2020 to 2023. However with RAG we can extend the training of the LLM seamlessly.
+This script asks an OpenAI LLM for the list of winners of the Nobel Prize in physics from 2020 to 2024. Since the LLM was trained before the announcement in 2024 it can only tell the winners from 2020 to 2023. However, with RAG we can extend the training of the LLM seamlessly.
+
+```mermaid
+flowchart TD
+    A[Client] --Makes request for the information\nwhich the LLM wasn't trained with.--> B[3rd party source... DB, Web, Etc.]
+    B --Adds the retrieved information.--> A[Client]
+    A[Client] --Makes requests with query.--> C["Large Language Model"]
+    C --LLM augments its training\nwith the extra information,\ngenerates content and responds.--> A
+```
 
 ## Python Version
 ```shell
 >=3.12
 ```
+You can use pyenv to set up the right version. Example `pyenv local v3.12.7`
 
 ## Setup Local Env
 ```shell
 python -m venv .venv
+```
+
+## Change directory
+```shell
+cd rag
 ```
 
 ## Install
